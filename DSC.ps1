@@ -17,7 +17,7 @@ Configuration Win10Desktop
     Import-DscResource -Name UserRightsAssignment
 
     Node 'localhost'
-
+{
 <#Install Client Hyper-V Role#>
     Script Hyper-V
     {
@@ -106,7 +106,7 @@ Configuration Win10Desktop
             })
             Dependson="[File]GIT" 
         }
-	cNtfsPermissionEntry ShareUsers
+	cNtfsPermissionEntry GITUsers
     <#Uses cNtfsAccessControl from https://www.powershellgallery.com/packages/cNtfsAccessControl/1.4.1#>
         {
             Ensure                   = 'Present'
@@ -166,11 +166,6 @@ Configuration Win10Desktop
     cChocoPackageInstaller vscode
         {
             Name="vscode"
-            DependsOn = "[cChocoInstaller]installChoco"
-        }
-    cChocoPackageInstaller firefox
-        {
-            Name="firefox"
             DependsOn = "[cChocoInstaller]installChoco"
         }
     cChocoPackageInstaller firefox
