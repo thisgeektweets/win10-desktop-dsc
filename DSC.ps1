@@ -239,4 +239,6 @@ $ConfigData = @{
 
 Win10Desktop -ConfigurationData $ConfigData
 
+winrm quickconfig
+
 start-dscConfiguration -path ./Win10Desktop -wait -force -verbose
